@@ -3,7 +3,7 @@ from models import *
 
 class master_serializer(serializers.ModelSerializer):
     class Meta:
-        model = master_user
+        model = app_details
         fields = "__all__"
 
 class apartment_serializer(serializers.ModelSerializer):
