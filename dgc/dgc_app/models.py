@@ -23,8 +23,26 @@ class app_details(models.Model):
 
 
 class admin_details(models.Model):
+    last10days = 10
+    last20days = 20
+    last30days = 30
+    last60days = 60
+    last90days = 90
+    last180days = 180
+    last240days = 240
+    last365days = 365
+    days_selects = [
+        (last10days, 'Last 10 days'),
+        (last20days, 'Last 20 days'),
+        (last30days, 'Last 30 days'),
+        (last60days, 'Last 60 days'),
+        (last90days, 'Last 90 days'),
+        (last180days, 'Last 180 days'),
+        (last240days, 'Last 240 days'),
+        (last365days, 'Last 365 days'),
+    ]
     photo = models.ImageField(blank=True)
-    name = models.CharField(max_length=100, blank=True)
+    admin_name = models.CharField(max_length=100, blank=True)
     age = models.PositiveSmallIntegerField(blank=True)
     role = models.CharField(max_length=100, blank=True)
     mobile_no = models.PositiveBigIntegerField(blank=True)
@@ -36,25 +54,6 @@ class admin_details(models.Model):
     status = models.CharField(max_length=50, choices=['verified', 'unverified'], default='unverified')
     username = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
-
-
-class permission_for_admin(models.Model):
-    last10days = 10
-    last30days = 30
-    last60days = 60
-    last90days = 90
-    last180days = 180
-    last240days = 240
-    last365days = 365
-    days_selects = [
-        (last10days, 'Last 10 days'),
-        (last30days, 'Last 30 days'),
-        (last60days, 'Last 60 days'),
-        (last90days, 'Last 90 days'),
-        (last180days, 'Last 180 days'),
-        (last240days, 'Last 240 days'),
-        (last365days, 'Last 365 days'),
-    ]
     show_visitors = models.CharField(max_length=50, choices=['yes', 'No'], default='No')
     visitors_selected_block = models.CharField(max_length=100, default="block-1")
     visitors_selected_days = models.CharField(max_length=100, choices=days_selects, default=last10days)
@@ -87,4 +86,6 @@ class permission_for_admin(models.Model):
     residence_selected_block = models.CharField(max_length=100, default="block-1")
     show_inventory = models.CharField(max_length=50, choices=['Yes', 'No'], default='No')
     inventory_selected_block = models.CharField(max_length=100, default="block-1")
+
+
 

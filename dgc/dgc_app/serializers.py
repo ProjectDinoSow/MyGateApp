@@ -17,10 +17,3 @@ class admin_serializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-
-
-
-
-
-
-
