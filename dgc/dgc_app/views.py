@@ -46,6 +46,11 @@ class apartment_create(viewsets.ViewSet):
         serializer = apartment_serializer(apartments, many=True)
         return Response(serializer.data)
 
+    def specify_app_views(self, request, pk=None):
+        apartments = app_details.objects.get(apartment_id=pk)
+        serializer = apartment_serializer(apartments)
+        return Response(serializer.data)
+
     def app_update(self, request, pk=None):
         apartment_edit = app_details.objects.get(apartment_id=pk)
         serializer = apartment_serializer(instance=apartment_edit, data=request.data)
@@ -68,6 +73,11 @@ class admin_register(viewsets.ViewSet):
     def admin_views(self, request):
         admins = admin_details.objects.all()
         serializer = admin_serializer(admins, many=True)
+        return Response(serializer.data)
+
+    def specify_admin_views(self, request, pk=None):
+        admins = admin_details.objects.get(admin_name=pk)
+        serializer = apartment_serializer(admins)
         return Response(serializer.data)
 
     def admin_update(self, request, pk=None):
