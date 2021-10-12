@@ -11,6 +11,11 @@ class master_login(viewsets.ViewSet):
         serializer.save()
         return Response(status=status.HTTP_201_CREATED)
 
+    def master_views(self, request, pk=None):
+        admins = admin_details.objects.get(admin_name=pk)
+        serializers = admin_serializer(admins)
+        return Response(status=status.HTTP_200_OK)
+
     def login(self, request):
         if request.method == "POST":
             try:

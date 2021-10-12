@@ -6,6 +6,7 @@ urlpatterns = [
         'post': 'master_create',
     })),
     path('master/<str:pk>', views.master_login.as_view({
+        'get': 'master_views',
         'put': 'master_update',
         'delete': 'master_del',
     })),
