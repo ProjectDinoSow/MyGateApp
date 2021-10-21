@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from models import *
+from .models import master_user, app_details, admin_details
 
 class master_serializer(serializers.ModelSerializer):
     class Meta:
